@@ -34,8 +34,8 @@ Projeto desenvolvido em Java que gera uma matriz 3x3 com valores aleatórios e o
 
 **1. Clone o repositório**
 ```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
-cd seu-repositorio
+git clone https://github.com/Klauz-code/Vetores-Multidimensionais-.git
+cd Vetores-Multidimensionais-
 ```
 
 **2. Compile os arquivos**
