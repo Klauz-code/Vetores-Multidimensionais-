@@ -144,4 +144,25 @@ public class MetodosMatriz {
         }
         return true; // passou pelas duas verificações: e identidade
     }
+
+    public static int[][] trocarLinhasEColunas(int[][] matrizBase, int linhaX, int linhaY, int colunaA, int colunaB) {
+
+        // PASSO 1: TROCAR AS LINHAS
+        // Percorre coluna por coluna e troca os elementos entre linhaX e linhaY
+        for (int j = 0; j < matrizBase[0].length; j++) {
+            int temp = matrizBase[linhaX][j];        // guarda o valor da linhaX temporariamente
+            matrizBase[linhaX][j] = matrizBase[linhaY][j]; // linhaX recebe o valor da linhaY
+            matrizBase[linhaY][j] = temp;            // linhaY recebe o valor guardado (original da linhaX)
+        }
+
+        // PASSO 2: TROCAR AS COLUNAS
+        // Percorre linha por linha e troca os elementos entre colunaA e colunaB
+        for (int i = 0; i < matrizBase.length; i++) {
+            int temp = matrizBase[i][colunaA];        // guarda o valor da colunaA temporariamente
+            matrizBase[i][colunaA] = matrizBase[i][colunaB]; // colunaA recebe o valor da colunaB
+            matrizBase[i][colunaB] = temp;            // colunaB recebe o valor guardado (original da colunaA)
+        }
+
+        return matrizBase;
+    }
 }

@@ -101,6 +101,21 @@ public class Main {
                     boolean ehIdentidade = MetodosMatriz.ehIdentidade(matriz);
                     System.out.println(ehIdentidade ? "A matriz É identidade." : "A matriz NÃO é identidade.");
                 }
+                case 7 -> {
+                    System.out.println("\nMATRIZ ORIGINAL:");
+                    System.out.println(MetodosMatriz.mostrarMatriz(matriz));
+                    System.out.println("Digite linhaX (0 a 2): ");
+                    int linhaX = input.nextInt();
+                    System.out.println("Digite linhaY (0 a 2): ");
+                    int linhaY = input.nextInt();
+                    System.out.println("Digite colunaA (0 a 2): ");
+                    int colunaA = input.nextInt();
+                    System.out.println("Digite colunaB (0 a 2): ");
+                    int colunaB = input.nextInt();
+                    int[][] matrizTrocada = MetodosMatriz.trocarLinhasEColunas(matriz, linhaX, linhaY, colunaA, colunaB);
+                    System.out.println("\nOPÇÃO 7 - Matriz após as trocas:\n");
+                    System.out.println(MetodosMatriz.mostrarMatriz(matrizTrocada));
+                }
             }
         }
 
