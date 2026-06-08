@@ -33,12 +33,12 @@ public class Main {
             // Loop de validação: fica pedindo uma opção até receber um valor entre 0 e 6
             do{
                 System.out.println(MetodosMatriz.menu());
-                if (opcao < 0 || opcao > 6){
+                if (opcao < 0 || opcao > 7){
                     System.out.println("\nESCOLHA UMA OPÇÃO VÁLIDA\n");
                 }
                 System.out.print("Sua opção >>>> ");
                 opcao = input.nextInt();
-            } while(opcao < 0 || opcao > 6);
+            } while(opcao < 0 || opcao > 7);
 
             // Executa a operação correspondente à opção escolhida
             switch (opcao) {
