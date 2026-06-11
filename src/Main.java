@@ -33,12 +33,12 @@ public class Main {
             // Loop de validação: fica pedindo uma opção até receber um valor entre 0 e 6
             do{
                 System.out.println(MetodosMatriz.menu());
-                if (opcao < 0 || opcao > 7){
+                if (opcao < 0 || opcao > 10){
                     System.out.println("\nESCOLHA UMA OPÇÃO VÁLIDA\n");
                 }
                 System.out.print("Sua opção >>>> ");
                 opcao = input.nextInt();
-            } while(opcao < 0 || opcao > 7);
+            } while(opcao < 0 || opcao > 10);
 
             // Executa a operação correspondente à opção escolhida
             switch (opcao) {
@@ -115,6 +115,32 @@ public class Main {
                     int[][] matrizTrocada = MetodosMatriz.trocarLinhasEColunas(matriz, linhaX, linhaY, colunaA, colunaB);
                     System.out.println("\nOPÇÃO 7 - Matriz após as trocas:\n");
                     System.out.println(MetodosMatriz.mostrarMatriz(matrizTrocada));
+                }
+                case 8 -> {
+                    System.out.println("\nMATRIZ ORIGINAL:");
+                    System.out.println(MetodosMatriz.mostrarMatriz(matriz));
+                    System.out.println("\nOPÇÃO 8 - Números primos ordenados:\n");
+                    int[] primos = MetodosMatriz.primosOrdenados(matriz);
+                    if (primos.length == 0) {
+                        System.out.println("Nenhum número primo encontrado na matriz.");
+                    } else {
+                        System.out.print("Primos encontrados: ");
+                        for (int primo : primos) System.out.print(primo + " ");
+                        System.out.println();
+                    }
+                }
+                case 9 -> {
+                    System.out.println("\nMATRIZ ORIGINAL:");
+                    System.out.println(MetodosMatriz.mostrarMatriz(matriz));
+                    System.out.println("\nOPÇÃO 9 - Média da borda:\n");
+                    double media = MetodosMatriz.mediaBorda(matriz);
+                    System.out.printf("Média dos elementos da borda: %.2f%n", media);
+                }
+                case 10 -> {
+                    System.out.println("\nMATRIZ ORIGINAL:");
+                    System.out.println(MetodosMatriz.mostrarMatriz(matriz));
+                    System.out.println("\nOPÇÃO 10 - Impressão em espiral:\n");
+                    MetodosMatriz.imprimirEspiral(matriz);
                 }
             }
         }

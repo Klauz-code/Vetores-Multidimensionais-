@@ -208,4 +208,63 @@ public class MetodosMatriz {
 
         return primos;
     }
+    public static double mediaBorda(int[][] matrizBase) {
+        int soma = 0;
+        int quantidade = 0;
+
+        for (int i = 0; i < matrizBase.length; i++) {
+            for (int j = 0; j < matrizBase[0].length; j++) {
+                // pertence à borda se está na primeira/última linha OU primeira/última coluna
+                boolean ehBorda = i == 0 || i == matrizBase.length - 1
+                        || j == 0 || j == matrizBase[0].length - 1;
+                if (ehBorda) {
+                    soma += matrizBase[i][j];
+                    quantidade++;
+                }
+            }
+        }
+
+        return (double) soma / quantidade;
+    }
+    public static void imprimirEspiral(int[][] matrizBase) {
+        // define os limites da borda atual que está sendo percorrida
+        int topoLinha    = 0;
+        int fundoLinha   = matrizBase.length - 1;
+        int esquerdaCol  = 0;
+        int direitaCol   = matrizBase[0].length - 1;
+
+        System.out.print("ESPIRAL: ");
+
+        while (topoLinha <= fundoLinha && esquerdaCol <= direitaCol) {
+
+            // 1. Percorre da esquerda para a direita na linha do topo
+            for (int j = esquerdaCol; j <= direitaCol; j++) {
+                System.out.print(matrizBase[topoLinha][j] + " ");
+            }
+            topoLinha++; // topo consumido, desce o limite superior
+
+            // 2. Percorre de cima para baixo na coluna da direita
+            for (int i = topoLinha; i <= fundoLinha; i++) {
+                System.out.print(matrizBase[i][direitaCol] + " ");
+            }
+            direitaCol--; // direita consumida, recua o limite direito
+
+            // 3. Percorre da direita para a esquerda na linha do fundo
+            if (topoLinha <= fundoLinha) {
+                for (int j = direitaCol; j >= esquerdaCol; j--) {
+                    System.out.print(matrizBase[fundoLinha][j] + " ");
+                }
+                fundoLinha--; // fundo consumido, sobe o limite inferior
+            }
+
+            // 4. Percorre de baixo para cima na coluna da esquerda
+            if (esquerdaCol <= direitaCol) {
+                for (int i = fundoLinha; i >= topoLinha; i--) {
+                    System.out.print(matrizBase[i][esquerdaCol] + " ");
+                }
+                esquerdaCol++; // esquerda consumida, avança o limite esquerdo
+            }
+        }
+        System.out.println();
+    }
 }
