@@ -157,4 +157,55 @@ public class MetodosMatriz {
 
         return matrizBase;
     }
+    // Verifica se um número é primo
+    private static boolean ehPrimo(int n) {
+        if (n < 2) {
+            return false;                    // números menores que 2 não são primos
+        }
+        for (int i = 2; i <= Math.sqrt(n); i++) {   // só precisa testar até a raiz quadrada de n
+            if (n % i == 0) {
+                return false;           // se dividir exato por qualquer número, não é primo
+            }
+        }
+        return true;
+    }
+
+    // Coleta todos os primos da matriz e retorna ordenados de forma crescente
+    public static int[] primosOrdenados(int[][] matrizBase) {
+        int quantidade = 0;
+
+        // 1º loop: conta quantos primos existem na matriz para criar o array do tamanho certo
+        for (int i = 0; i < matrizBase.length; i++) {
+            for (int j = 0; j < matrizBase[0].length; j++) {
+                if (ehPrimo(matrizBase[i][j])) quantidade++;
+            }
+        }
+
+        // Cria o array com exatamente o número de primos encontrados
+        int[] primos = new int[quantidade];
+        int indice = 0;
+
+        // 2º loop: preenche o array com os primos encontrados
+        for (int i = 0; i < matrizBase.length; i++) {
+            for (int j = 0; j < matrizBase[0].length; j++) {
+                if (ehPrimo(matrizBase[i][j])) {
+                    primos[indice] = matrizBase[i][j];
+                    indice++;
+                }
+            }
+        }
+
+        // Ordena o array em ordem crescente
+        for (int i = 0; i < primos.length - 1; i++) {
+            for (int j = 0; j < primos.length - 1 - i; j++) {
+                if (primos[j] > primos[j + 1]) {
+                    int temp = primos[j];
+                    primos[j] = primos[j + 1];
+                    primos[j + 1] = temp;
+                }
+            }
+        }
+
+        return primos;
+    }
 }
