@@ -83,14 +83,6 @@ public class MetodosMatriz {
             for (int j = 0; j < matrizBase[0].length; j++) {
                 if (matrizBase[i][j] > valorMaximo){
                     valorMaximo = matrizBase[i][j]; // atualiza o maior valor encontrado ate agora
-                }
-            }
-        }
-
-        // 2º loop: percorre a matriz novamente para encontrar em qual posição está o maior valor
-        for (int i = 0; i < matrizBase.length; i++) {
-            for (int j = 0; j < matrizBase[0].length; j++) {
-                if (matrizBase[i][j] == valorMaximo){
                     coordenadas[0] = i + 1; // +1 para exibir a posição contando a partir de 1 (não de 0)
                     coordenadas[1] = j + 1;
                 }
